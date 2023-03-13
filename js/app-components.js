@@ -24,7 +24,7 @@ app.component('toolBox', {
       <div class="row align-items-center">
         <div class="col"></div>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
             {{ title }}
           </button>
@@ -69,7 +69,9 @@ app.component('tool', {
 
 
     template: `
-      <li>{{ item.category }} || {{ item.name }}<li>
+      <ul class="list-group">
+      <li class="list-group-item">{{ item.category }} || {{ item.name }}<li>
+      </ul>
       <button class="btn btn-danger" v-on:click="remove"><i class="fas fa-minus-circle"></i> Remove</button>
     `
 });
