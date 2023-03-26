@@ -21,38 +21,30 @@ app.component('toolBox', {
 
     template: `
       <div class="container text-center">
-      <div class="row align-items-center">
-        <div class="col"></div>
         <div class="dropdown">
-          <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          <button class="btn btn-secondary dropdown-toggle w-50" type="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
-            {{ title }}
           </button>
-          <ul class="dropdown-menu">
-            <tool
-                v-for="item in items"
-                :item="item"
-                :key="item.category"
-                @remove-item="removeItem"
-            ></tool>
-            <br>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+          <div class="dropdown-menu">
+            <ul class="list-group">
+              <tool
+                  v-for="item in items"
+                  :item="item"
+                  :key="item.category"
+                  @remove-item="removeItem"
+              ></tool>
+            </ul>
+            <button type="button" class="btn btn-primary fas fa-plus-circle" data-bs-toggle="modal"
                     data-bs-target="#addToToolBoxModal">
-              Add Tool
+              <i class="fas fa-plus-circle">Add Tool</i>
             </button>
-          </ul>
+          </div>
         </div>
-      </div>
       </div>
     `
 });
 
 app.component('tool', {
-    data() {
-        return {
-            vid: 'sli' + Math.floor(Math.random() * 10e16)
-        }
-    },
 
     props: {
         item: Object,
@@ -64,14 +56,12 @@ app.component('tool', {
         remove() {
             this.$emit('remove-item', this.item);
         },
-
     },
 
-
     template: `
-      <ul class="list-group">
-      <li class="list-group-item">{{ item.category }} || {{ item.name }}<li>
-      </ul>
+      <li class="list-group-item flex-fill">
+      {{ item.category }} || {{ item.name }}
       <button class="btn btn-danger" v-on:click="remove"><i class="fas fa-minus-circle"></i> Remove</button>
+      </li>
     `
 });

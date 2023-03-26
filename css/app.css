@@ -2,3 +2,8 @@ button {
     padding: 1em;
     margin: 1em;
 }
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}

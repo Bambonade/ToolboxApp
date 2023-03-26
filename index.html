@@ -22,18 +22,62 @@
     <add-To-Tool-Box-Modal title="Add to Table" id="addToToolBoxModal"
                            @add-to-table="addToTable"></add-To-Tool-Box-Modal>
     <div class="container-fluid">
+        <!-- TOP DRAWER -->
         <div class="row">
-            <div class="col-md p-3 m-3" id="topDrawer">
-
-                <tool-Box title="Top Drawer" :items="topDrawer"
-                                              @remove-item="removeFromTable"></tool-Box>
+            <div class="col bg-primary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+        </div>
+        <div class="row">
+            <!-- LEFT 2nd DRAWER -->
+            <div class="col bg-secondary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+            <!-- RIGHT 2nd DRAWER -->
+            <div class="col bg-secondary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md p-3 m-3" id="rightBottomDrawer">
+            <!-- LEFT 3nd DRAWER -->
+            <div class="col bg-primary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+            <!-- RIGHT 3nd DRAWER -->
+            <div class="col bg-primary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+        </div>
 
-                <tool-Box title="Right Bottom Drawer" :items="rightBottomDrawer"
+        <div class="row">
+            <!-- LEFT 4nd DRAWER -->
+            <div class="col bg-secondary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+            <!-- RIGHT 4nd DRAWER -->
+            <div class="col bg-secondary">
+                <tool-Box :items="topDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- LEFT BOTTOM DRAWER -->
+            <div class="col bg-primary">
+                <tool-Box :items="rightBottomDrawer"
+                          @remove-item="removeFromTable"></tool-Box>
+            </div>
+            <!-- RIGHT BOTTOM DRAWER -->
+            <div class="col bg-primary">
+                <tool-Box :items="rightBottomDrawer"
                           @remove-item="removeFromTable"></tool-Box>
             </div>
         </div>
