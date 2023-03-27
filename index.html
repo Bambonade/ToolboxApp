@@ -19,66 +19,69 @@
         <span class="navbar-brand">TOOL FINDER</span>
     </nav>
     <h3 class="text-center">WHERE ARE MY TOOLS?</h3>
-    <add-To-Tool-Box-Modal title="Add to Table" id="addToToolBoxModal"
-                           @add-to-table="addToTable"></add-To-Tool-Box-Modal>
-    <div class="container-fluid">
+    <add-To-Drawer-Modal title="Add to Drawer" id="addtodrawermodal"
+                           @add-to-drawer="addToDrawer"></add-To-Drawer-Modal>
+    <edit-Tool-Modal title="Edit Tool" v-show="allowEdit" @edit-drawer-item="edit"
+                     :item="item" id="editdrawermodal"></edit-Tool-Modal>
+<!--    <toolbox></toolbox>  -->
+    <div class="container-fluid w-25 p-2 bg-primary rounded">
         <!-- TOP DRAWER -->
         <div class="row">
-            <div class="col bg-primary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="topDrawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
         </div>
         <div class="row">
             <!-- LEFT 2nd DRAWER -->
-            <div class="col bg-secondary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="left2Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
             <!-- RIGHT 2nd DRAWER -->
-            <div class="col bg-secondary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="right2Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
         </div>
 
         <div class="row">
             <!-- LEFT 3nd DRAWER -->
-            <div class="col bg-primary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="left3Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
             <!-- RIGHT 3nd DRAWER -->
-            <div class="col bg-primary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="right3Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
         </div>
 
         <div class="row">
             <!-- LEFT 4nd DRAWER -->
-            <div class="col bg-secondary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="left4Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
             <!-- RIGHT 4nd DRAWER -->
-            <div class="col bg-secondary">
-                <tool-Box :items="topDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="right4Drawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
         </div>
 
 
         <div class="row">
             <!-- LEFT BOTTOM DRAWER -->
-            <div class="col bg-primary">
-                <tool-Box :items="rightBottomDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="leftBottomDrawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
             <!-- RIGHT BOTTOM DRAWER -->
-            <div class="col bg-primary">
-                <tool-Box :items="rightBottomDrawer"
-                          @remove-item="removeFromTable"></tool-Box>
+            <div class="col">
+                <drawer :allow-edit="true" :items="rightBottomDrawer" @edit-drawer="editDrawer"
+                        @remove-item="removeFromDrawer"></drawer>
             </div>
         </div>
 
@@ -93,7 +96,8 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="js/app.js"></script>
 <script src="js/app-components.js"></script>
-<script src="js/addToToolBoxModal.js"></script>
+<script src="js/addToDrawerModal.js"></script>
+<script src="js/toolbox.js"></script>
 <script>
     // start the app after all the other JS has been loaded
     app.mount('#app');

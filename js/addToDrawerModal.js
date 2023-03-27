@@ -1,5 +1,5 @@
 
-app.component('addToToolBoxModal', {
+app.component('addToDrawerModal', {
     data: function () {
         return {
             newItem: {
@@ -25,9 +25,9 @@ app.component('addToToolBoxModal', {
     },
 
     methods: {
-        addToTable() {
+        addToDrawer() {
             if (this.newItem.name && this.newItem.category) {
-                this.$emit('add-To-Table', this.newItem);
+                this.$emit('add-To-Drawer', this.newItem);
 
                 this.newItem = {
                     name: '',
@@ -45,7 +45,7 @@ app.component('addToToolBoxModal', {
             'use strict'
 
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
+            let forms = document.querySelectorAll('.needs-validation')
 
             // Loop over them and prevent submission
             Array.prototype.slice.call(forms)
@@ -89,8 +89,11 @@ app.component('addToToolBoxModal', {
                     <option value="Ratchet">Ratchet</option>
                     <option value="PowerTool">Power Tool</option>
                     <option value="Pneumatic">Pneumatic</option>
-                    <option value="Plier">PLIER</option>
-                    <option value="Bit">BIT</option>
+                    <option value="Pliers">Pliers</option>
+                    <option value="Bit">Bit</option>
+                    <option value="ScrewDriver">Screw Driver</option>
+                    <option value="Torx">Torx</option>
+                    <option value="Electrical">Electrical</option>
                   </select>
                   <div class="invalid-feedback">
                     Please enter the product's category
@@ -101,7 +104,7 @@ app.component('addToToolBoxModal', {
               <div class="container-fluid" id="modalFooter">
                 <div class="text-center">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                  <button type="submit" class="btn btn-primary" @click="addToTable">Confirm</button>
+                  <button type="submit" class="btn btn-primary" @click="addToDrawer">Confirm</button>
                 </div>
               </div>
             </form>
@@ -109,7 +112,5 @@ app.component('addToToolBoxModal', {
         </div>
       </div>
       </div>
-
-
     `
 });

@@ -1,58 +1,82 @@
 const app = Vue.createApp({
     data: function () {
         return {
-            toolBox: [
+            tool: [
                 {
-                    name: '7mm',
+                    name: '1/4" METRIC Socket Set',
                     category: 'Socket',
                 },
                 {
-                    name: '8mm',
+                    name: '1/4" SAE Socket Set',
                     category: 'Socket',
                 },
                 {
-                    name: '9mm',
+                    name: '3/8" METRIC Socket Set',
                     category: 'Socket',
                 },
                 {
-                    name: '10mm',
+                    name: '3/8" SAE Socket Set',
                     category: 'Socket',
                 },
                 {
-                    name: '11mm',
-                    category: 'Socket',
+                    name: '1/4" Ratchet',
+                    category: 'Ratchet',
                 },
                 {
-                    name: '12mm',
-                    category: 'Socket',
+                    name: '3/8" Ratchet',
+                    category: 'Ratchet',
                 },
                 {
-                    name: '13mm',
-                    category: 'Socket',
+                    name: '1/2" Ratchet',
+                    category: 'Ratchet',
                 },
                 {
-                    name: '14mm',
-                    category: 'Socket',
+                    name: '123 Piece Bit Set',
+                    category: 'Bit',
                 },
                 {
-                    name: '15mm',
-                    category: 'Socket',
+                    name: '12 Piece Metric Wrench Set',
+                    category: 'Wrench',
                 },
                 {
-                    name: '11/32"',
-                    category: 'Socket',
+                    name: 'Torx/Alan Socket Set',
+                    category: 'Torx',
                 },
                 {
-                    name: '3/8"',
-                    category: 'Socket',
+                    name: '3/8" MAC Air Ratchet',
+                    category: 'Pneumatic',
                 },
                 {
-                    name: '7/16"',
-                    category: 'Socket',
+                    name: 'Cornwell Orbital Sander (DA)',
+                    category: 'Pneumatic',
                 },
                 {
-                    name: '1/2"',
-                    category: 'Socket',
+                    name: 'Cornwell Right Angle Die Grinder',
+                    category: 'Pneumatic',
+                },
+                {
+                    name: 'Cornwell Die Grinder',
+                    category: 'Pneumatic',
+                },
+                {
+                    name: '10 Piece Screw Driver Set',
+                    category: 'ScrewDriver',
+                },
+                {
+                    name: 'Milwaukee 5 Piece Locking Pliers',
+                    category: 'Pliers',
+                },
+                {
+                    name: 'Cornwell 5 Piece Pliers Set',
+                    category: 'Pliers',
+                },
+                {
+                    name: 'Electrical Tape',
+                    category: 'Electrical',
+                },
+                {
+                    name: 'Wire Stripper',
+                    category: 'Electrical',
                 },
                 {
                     name: 'Milwaukee Impact Driver',
@@ -79,43 +103,83 @@ const app = Vue.createApp({
     },
 
     methods: {
-        addToTable(item) {
-            console.log('added from the app method')
-            this.toolBox.push(item);
+        addToDrawer(item) {
+            this.tool.push(item);
         },
-        removeFromTable(item) {
-            console.log("removed from table");
-            this.toolBox.splice(this.toolBox.indexOf(item), 1);
+        removeFromDrawer(item) {
+            this.tool.splice(this.tool.indexOf(item), 1);
         },
 
-        editTable(item){
-            console.log("editing item in app.js");
+        editDrawer(item, newItem){
+            this.tool.splice(this.tool.indexOf(item))
         },
     },
     computed: {
         topDrawer: function () {
-            return this.toolBox.filter(function (item) {
-                return item.category === 'Socket';
+            return this.tool.filter(function (item) {
+                return item.category === 'Socket' && 'Ratchet';
+            })
+        },
+
+        left2Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Torx';
+            })
+        },
+
+        right2Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Wrench';
+            })
+        },
+
+        left3Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Bit';
+            })
+        },
+
+        right3Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'ScrewDriver';
+            })
+        },
+
+        left4Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Electrical';
+            })
+        },
+
+        right4Drawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Pliers';
+            })
+        },
+
+        leftBottomDrawer: function () {
+            return this.tool.filter(function (item) {
+                return item.category === 'Pneumatic';
             })
         },
 
         rightBottomDrawer: function () {
-            return this.toolBox.filter(function (item) {
+            return this.tool.filter(function (item) {
                 return item.category === 'PowerTool';
             })
         },
     },
 
     mounted: function () {
-        if (localStorage.getItem('toolBox')) {
-            this.toolBox = JSON.parse(localStorage.getItem('toolBox'));
+        if (localStorage.getItem('tool')) {
+            this.tool = JSON.parse(localStorage.getItem('tool'));
         }
     },
 
     watch: {
-        toolBox: {
+        tool: {
             handler: function (newList) {
-                localStorage.setItem('toolBox', JSON.stringify(newList));
+                localStorage.setItem('tool', JSON.stringify(newList));
             }
         },
     }
